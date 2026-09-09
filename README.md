@@ -1,36 +1,116 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Web de Emiliano Peralta
 
-## Getting Started
+Landing page de una sola pantalla para captar consultas por WhatsApp.
+Next.js 16 (App Router) + Tailwind v4. Sin base de datos ni backend.
 
-First, run the development server:
+## Correr el proyecto
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # build de producción
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Dónde se edita el contenido
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Todo el texto, los precios y el contacto están en un solo archivo:**
+[`lib/content.ts`](lib/content.ts). No hace falta tocar los componentes para
+cambiar un precio, sumar una pregunta frecuente o corregir un testimonio.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Los puntos marcados con `TODO` en ese archivo son los que hay que confirmar
+antes de publicar:
 
-## Learn More
+| Qué | Dónde |
+| --- | --- |
+| Usuario real de Instagram | `site.instagram` |
+| Dominio final | `site.url` |
+| Precios de los planes | `planes[].precio` |
+| Testimonios reales | `testimonios` |
 
-To learn more about Next.js, take a look at the following resources:
+## Imágenes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Están en `public/images/`. **Todas son fotos de stock (Unsplash) puestas como
+placeholder.** Para reemplazarlas alcanza con pisar el archivo manteniendo el
+mismo nombre.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Prioridad de reemplazo por fotos reales de Emi:
 
-## Deploy on Vercel
+1. `hero-profe.jpg` — la foto grande del inicio (idealmente recorte sin fondo).
+2. `trayectoria.jpg` — Emi trabajando.
+3. `srv-*.jpg` — una foto por servicio.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Formato sugerido: JPG o WebP, lado largo ~1600px, menos de 400 KB.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Foto de portada sin fondo
+
+Cuando esté el recorte de Emi (PNG con transparencia), en `lib/content.ts`:
+
+```ts
+foto: {
+  src: "/images/emi-recorte.png",
+  alt: "Emiliano Peralta",
+  modo: "recorte",   // en vez de "foto"
+}
+```
+
+En modo `recorte` la imagen se apoya abajo sin recortarse y se dibuja un halo
+lima detrás de la silueta. En modo `foto` la imagen llena el bloque.
+
+## Estructura
+
+```
+app/
+  layout.tsx      metadatos, fuentes, JSON-LD para Google
+  page.tsx        orden de las secciones
+  globals.css     tokens de diseño (colores, tipografía, easings)
+components/
+  Hero.tsx        portada + navegación
+  Nav.tsx         cabecera, barra flotante y menú
+  Prueba.tsx      cinta de instituciones + números
+  Servicios.tsx   servicios + para quién
+  Oferta.tsx      método + planes
+  Confianza.tsx   testimonios + trayectoria
+  Cierre.tsx      FAQ, CTA final, footer, botón flotante
+  Reveal.tsx      animación de entrada al hacer scroll
+  ui.tsx          tarjeta y encabezado de sección
+lib/content.ts    TODO el contenido editable
+scripts/shoot.js  capturas automáticas para revisar el diseño
+```
+
+## Sistema de diseño
+
+Definido con tokens en `app/globals.css`:
+
+- **Colores**: `ink` (negro), `bone` (hueso), `lime` (verde ácido de marca).
+- **Tipografías**: Archivo para títulos y texto, JetBrains Mono para
+  etiquetas y números.
+- **Layout**: cada sección es una tarjeta redondeada sobre el fondo lima.
+- **Movimiento**: curvas propias (`--ease-out-strong`), animaciones por debajo
+  de 300 ms, `scale(0.97)` al presionar botones, y respeto por
+  `prefers-reduced-motion`.
+
+Las animaciones de entrada están detrás de la clase `js` en `<html>`: si el
+JavaScript falla, el contenido se ve igual. Agregando `?static` a la URL se
+desactivan (útil para capturas e impresión).
+
+## Capturas para revisar el diseño
+
+```bash
+node scripts/shoot.js "http://localhost:3000/?static" 1440 1000 escritorio
+node scripts/shoot.js "http://localhost:3000/?static" 390 844 mobile
+```
+
+Requiere Chrome instalado. Guarda las capturas en `../shots`.
+
+## Publicar
+
+La página es estática. Sirve cualquier hosting que soporte Next.js:
+
+- **Vercel**: conectar el repo y listo (incluye optimización de imágenes).
+- **Cloudflare / Netlify**: agregar `output: "export"` e
+  `images: { unoptimized: true }` en `next.config.ts`, correr `npm run build` y
+  subir la carpeta `out/`.
+
+Antes de publicar: completar los `TODO` de `lib/content.ts` y poner el dominio
+real en `site.url` (de ahí salen el sitemap, el robots.txt y los metadatos para
+compartir en redes).

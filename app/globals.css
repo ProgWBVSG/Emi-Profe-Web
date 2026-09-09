@@ -1,26 +1,243 @@
 @import "tailwindcss";
 
+/* =========================================================================
+   TOKENS
+   ========================================================================= */
+@theme {
+  /* Color */
+  --color-ink: #0b0b0c;
+  --color-ink-3: #232529;
+  --color-bone: #f2f1ec;
+  --color-paper: #ffffff;
+  --color-lime: #e8574a;
+  --color-lime-2: #d94435;
+
+  /* Type */
+  --font-display: var(--font-montserrat), system-ui, sans-serif;
+  --font-sans: var(--font-montserrat), system-ui, sans-serif;
+  --font-mono: var(--font-mono-ui), ui-monospace, monospace;
+
+  /* Easing (Emil Kowalski curves — stronger than the CSS defaults) */
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* =========================================================================
+   BASE
+   ========================================================================= */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  -webkit-tap-highlight-color: transparent;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-lime);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-ink);
+  color: var(--color-lime);
+}
+
+/* Focus ring: visible, on-brand, never removed */
+:where(a, button, summary, input, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* =========================================================================
+   TYPE HELPERS
+   ========================================================================= */
+@layer components {
+.display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
+  text-wrap: balance;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.prose-body {
+  text-wrap: pretty;
+  line-height: 1.6;
+}
+
+}
+
+/* =========================================================================
+   BUTTONS  — press feedback is non-negotiable
+   ========================================================================= */
+@layer components {
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 1.0625rem 1.75rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  transition:
+    transform 160ms var(--ease-out-strong),
+    background-color 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-lime {
+  background: var(--color-lime);
+  color: var(--color-ink);
+  border: 1px solid transparent;
+}
+
+.btn-ink {
+  background: var(--color-ink);
+  color: var(--color-bone);
+  border: 1px solid var(--color-ink);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-ink);
+  border: 1px solid color-mix(in srgb, var(--color-ink) 22%, transparent);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-lime:hover {
+    background: var(--color-lime-2);
+  }
+  .btn-ink:hover {
+    background: var(--color-ink-3);
+  }
+  .btn-ghost:hover {
+    background: var(--color-ink);
+    color: var(--color-bone);
+    border-color: var(--color-ink);
+  }
+}
+}
+
+/* =========================================================================
+   SCROLL REVEAL (CSS-driven: runs off the main thread)
+   ========================================================================= */
+/* Por defecto TODO se ve. El estado oculto solo existe si el JS pudo
+   aplicar la clase .js en <html>: sin JS (o si algo falla) el contenido
+   igual se lee. */
+.reveal,
+.reveal-img {
+  opacity: 1;
+}
+
+html.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 700ms var(--ease-out-strong),
+    transform 700ms var(--ease-out-strong);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+html.js .reveal[data-visible="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Revelado de imagen con clip-path: barrido de abajo hacia arriba */
+html.js .reveal-img {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 900ms var(--ease-out-strong);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+html.js .reveal-img[data-visible="true"] {
+  clip-path: inset(0 0 0 0);
+}
+
+/* Trazo que se dibuja de izquierda a derecha (la guía del método) */
+html.js .reveal-line {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1000ms var(--ease-out-strong);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+html.js .reveal-line[data-visible="true"] {
+  clip-path: inset(0 0 0 0);
+}
+
+/* =========================================================================
+   ACCORDION
+   ========================================================================= */
+.acc-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 280ms var(--ease-out-strong);
+}
+
+.acc-panel[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+
+.acc-panel > div {
+  overflow: hidden;
+}
+
+/* =========================================================================
+   MISC
+   ========================================================================= */
+@layer components {
+.hairline {
+  border-color: color-mix(in srgb, var(--color-ink) 12%, transparent);
+}
+}
+
+/* =========================================================================
+   REDUCED MOTION — fewer and gentler, not zero
+   ========================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  html.js .reveal {
+    transform: none;
+    transition: opacity 300ms ease;
+  }
+  html.js .reveal-img,
+  html.js .reveal-line {
+    clip-path: none;
+    transition: opacity 300ms ease;
+  }
+  .btn:active {
+    transform: none;
+  }
 }
