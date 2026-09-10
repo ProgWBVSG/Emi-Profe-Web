@@ -13,7 +13,7 @@ export const site = {
   telefono: "3516571033",
   whatsapp: "5493516571033",
   email: "emiperaltahjk@gmail.com",
-  instagram: "https://instagram.com/", // TODO: usuario real de Instagram
+  instagram: "https://www.instagram.com/emilianoperaltaz/",
   url: "https://emiperalta.com.ar", // TODO: dominio final
 };
 
