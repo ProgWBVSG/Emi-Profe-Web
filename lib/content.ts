@@ -62,7 +62,7 @@ export const hero = {
 };
 
 export const stats = [
-  { valor: "1800", sufijo: "hs", label: "de formación universitaria" },
+  { valor: "4664", sufijo: "hs", label: "de formación universitaria" },
   { valor: "6", sufijo: "+", label: "clubes y centros donde trabajé" },
   { valor: "6-80", sufijo: "", label: "años: entreno a todas las edades" },
   { valor: "100", sufijo: "%", label: "de los planes son individuales" },
@@ -292,7 +292,7 @@ export const formacion = [
   {
     titulo: "Profesorado Universitario en Educación Física",
     lugar: "Facultad de Educación Física · UPC",
-    detalle: "En curso · 4.º año",
+    detalle: "En curso · 4.º año · 2864 hs",
   },
   {
     titulo: "Preparador Físico Nivel 1 · UAR",
