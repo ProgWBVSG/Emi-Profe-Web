@@ -114,7 +114,7 @@ export const metodo = {
       icono: "chat" as const,
       titulo: "Hablamos",
       texto:
-        "Me contás qué buscás, cuánto tiempo tenés y qué te duele. Sin compromiso.",
+        "Me contás qué buscás, cuánto tiempo tenés y cuáles son tus objetivos. Sin compromiso.",
     },
     {
       n: "02",
