@@ -219,6 +219,15 @@ html.js .reveal-line[data-visible="true"] {
 .hairline {
   border-color: color-mix(in srgb, var(--color-ink) 12%, transparent);
 }
+
+/* Oculta la barra de scroll en carruseles horizontales (mobile). */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
 }
 
 /* =========================================================================
