@@ -41,7 +41,7 @@ export const nav = [
 ];
 
 export const hero = {
-  titulo: ["Construí", "el cuerpo", "que querés", "en 90 días"],
+  titulo: ["Construí el cuerpo", "que querés en 90 días"],
   bajada:
     "Dejá de improvisar rutinas. Te armo un plan hecho para tu cuerpo, tu tiempo y tu objetivo, y te acompaño semana a semana para que esta vez no lo dejes.",
   /* Foto de la portada.

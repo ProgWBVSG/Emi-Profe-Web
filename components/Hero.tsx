@@ -36,7 +36,7 @@ export default function Hero() {
               </span>
 
               <div className="relative z-10 flex flex-col items-center text-center">
-                <h1 className="display text-[clamp(2.9rem,5.9vw,5rem)]">
+                <h1 className="display text-[clamp(1.6rem,7vw,2.6rem)] lg:text-[42px] xl:text-[55px] 2xl:text-[66px]">
                   {hero.titulo.map((linea, i) => (
                     <span key={linea} className="block">
                       {linea}

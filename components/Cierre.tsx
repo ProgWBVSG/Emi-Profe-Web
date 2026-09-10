@@ -239,11 +239,19 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-2 pt-7 text-[13px] text-bone/35 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-3 pt-7 text-[13px] text-bone/35 sm:flex-row sm:items-center sm:justify-between">
         <p>
           © {anio} {site.nombre}
         </p>
-        <p>Técnico Universitario en Actividad Física · UPC</p>
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
+          <a href="/privacidad" className="transition-colors duration-200 hover:text-lime">
+            Privacidad
+          </a>
+          <a href="/terminos" className="transition-colors duration-200 hover:text-lime">
+            Términos
+          </a>
+          <span>Técnico Universitario en Actividad Física · UPC</span>
+        </div>
       </div>
     </footer>
   );
