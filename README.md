@@ -102,6 +102,26 @@ node scripts/shoot.js "http://localhost:3000/?static" 390 844 mobile
 
 Requiere Chrome instalado. Guarda las capturas en `../shots`.
 
+## SEO, favicon y llms.txt
+
+- **Favicon**: `app/favicon.ico`, `app/icon.png` y `app/apple-icon.png` se
+  generan con `node scripts/gen-icons.js` a partir del mismo diseño del logo
+  (`components/icons.tsx`). Si cambia el logo o el color de marca, correr ese
+  script de nuevo en vez de editar los PNG a mano.
+- **Imagen para compartir** (WhatsApp, redes, buscadores): `app/opengraph-image.tsx`
+  la genera en código, sin depender de un archivo de imagen. Editar ese
+  archivo para cambiar el texto o el diseño de la imagen.
+- **`public/llms.txt`**: resumen del sitio pensado para asistentes de IA
+  (ChatGPT, Claude, Perplexity, etc.), siguiendo la convención
+  [llms.txt](https://llmstxt.org/). Se sirve automáticamente en
+  `/llms.txt`. Actualizarlo a mano cuando cambien datos reales (servicios,
+  formación, contacto) en `lib/content.ts`.
+- **Datos estructurados**: `app/layout.tsx` incluye JSON-LD de tipo
+  `ProfessionalService` y `FAQPage`, para que Google pueda mostrar resultados
+  enriquecidos (ficha del negocio, preguntas frecuentes).
+- **`app/sitemap.ts`** y **`app/robots.ts`** ya están armados; solo hace falta
+  que `site.url` en `lib/content.ts` tenga el dominio real antes de publicar.
+
 ## Publicar
 
 La página es estática. Sirve cualquier hosting que soporte Next.js:

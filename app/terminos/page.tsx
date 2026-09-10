@@ -4,6 +4,10 @@ import { site } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Términos y condiciones",
+  description:
+    "Condiciones de los planes de entrenamiento de " + site.nombre + ".",
+  alternates: { canonical: site.url + "/terminos" },
+  robots: { index: true, follow: true },
 };
 
 export default function Terminos() {

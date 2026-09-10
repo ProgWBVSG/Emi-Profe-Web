@@ -1,0 +1,13 @@
+{
+  "name": "Emiliano Peralta · Entrenamiento",
+  "short_name": "Emi Peralta",
+  "description": "Planes de entrenamiento online y presenciales en Córdoba, Argentina.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#e8574a",
+  "theme_color": "#e8574a",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

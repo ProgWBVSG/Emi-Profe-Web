@@ -4,6 +4,10 @@ import { site } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Política de privacidad",
+  description:
+    "Qué datos recolecta el sitio de " + site.nombre + " y cómo se usan.",
+  alternates: { canonical: site.url + "/privacidad" },
+  robots: { index: true, follow: true },
 };
 
 export default function Privacidad() {

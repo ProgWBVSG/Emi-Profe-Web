@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Montserrat, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { site } from "@/lib/content";
+import { site, faq } from "@/lib/content";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -17,64 +17,112 @@ const mono = JetBrains_Mono({
   weight: ["400", "500", "600"],
 });
 
+const titulo = "Emiliano Peralta · Entrenamiento para la salud y el deporte";
 const descripcion =
   "Emiliano Peralta, profe de Educación Física en Córdoba. Planes de entrenamiento online y presenciales para todas las edades: readaptación de lesiones, adultos mayores, salud y rendimiento deportivo.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Emiliano Peralta · Entrenamiento para la salud y el deporte",
+    default: titulo,
     template: "%s · Emiliano Peralta",
   },
   description: descripcion,
   keywords: [
     "entrenador personal Córdoba",
-    "preparador físico",
+    "preparador físico Córdoba",
     "plan de entrenamiento online",
     "readaptación de lesiones",
     "entrenamiento adultos mayores",
     "profe de educación física",
+    "preparador físico de rugby",
+    "personal trainer Córdoba Argentina",
   ],
-  authors: [{ name: site.nombre }],
+  authors: [{ name: site.nombre, url: site.url }],
+  creator: site.nombre,
+  alternates: {
+    canonical: site.url,
+  },
   openGraph: {
     type: "website",
     locale: "es_AR",
     siteName: site.nombre,
-    title: "Emiliano Peralta · Entrenamiento para la salud y el deporte",
+    url: site.url,
+    title: titulo,
     description: descripcion,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Emiliano Peralta · Entrenamiento para la salud y el deporte",
+    title: titulo,
     description: descripcion,
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
+  manifest: "/site.webmanifest",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180" }],
+  },
 };
 
 export const viewport: Viewport = {
   themeColor: "#e8574a",
 };
 
-const jsonLd = {
+/** Ficha del negocio, para que Google, Bing y asistentes de IA entiendan
+ *  quién es Emi, dónde trabaja y qué ofrece. */
+const jsonLdNegocio = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
+  "@id": site.url + "/#negocio",
   name: site.nombre,
+  image: site.url + "/opengraph-image",
   description: descripcion,
   url: site.url,
   telephone: "+54 9 " + site.telefono,
   email: site.email,
   areaServed: "Córdoba, Argentina",
+  priceRange: "$$",
+  sameAs: [site.instagram],
   address: {
     "@type": "PostalAddress",
     addressLocality: "Córdoba",
     addressCountry: "AR",
+  },
+  founder: {
+    "@type": "Person",
+    name: site.nombre,
+    jobTitle: "Profesor de Educación Física",
   },
   knowsAbout: [
     "Preparación física",
     "Readaptación de lesiones",
     "Entrenamiento de fuerza",
     "Actividad física adaptada",
+    "Entrenamiento de adultos mayores",
+    "Preparación física de rugby",
   ],
+};
+
+/** Las mismas preguntas que aparecen en el botón de FAQ del sitio, para
+ *  que puedan salir como resultado enriquecido en Google. */
+const jsonLdFaq = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: f.a,
+    },
+  })),
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -101,7 +149,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {children}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdNegocio) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
         />
       </body>
     </html>
