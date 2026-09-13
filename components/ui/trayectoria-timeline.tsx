@@ -142,7 +142,7 @@ export default function TrayectoriaTimeline({
   return (
     <div
       className={cn(
-        "flex flex-col overflow-hidden rounded-[26px] border hairline bg-paper/70",
+        "flex flex-col overflow-hidden rounded-[26px] border hairline bg-paper",
         className
       )}
       onPointerEnter={() => setPausado(true)}
