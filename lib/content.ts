@@ -33,21 +33,34 @@ export const cta = {
   ),
 };
 
+/* Tienda (venta de suplementos) queda pendiente: todavía no tiene contenido
+   propio, así que no se agrega al menú hasta que exista esa sección. */
 export const nav = [
-  { label: "Para quién", href: "#perfiles" },
+  { label: "Inicio", href: "#top" },
+  { label: "Formación", href: "#formacion" },
+  { label: "Experiencia", href: "#experiencia" },
   { label: "Método", href: "#metodo" },
-  { label: "Planes", href: "#planes" },
-  { label: "Sobre mí", href: "#trayectoria" },
+  { label: "Servicios", href: "#servicios" },
+  { label: "Contacto", href: "#contacto" },
 ];
 
 export const hero = {
-  titulo: ["Construí el cuerpo", "que querés en 90 días"],
-  bajada:
-    "Dejá de improvisar rutinas. Te armo un plan hecho para tu cuerpo, tu tiempo y tu objetivo, y te acompaño semana a semana para que esta vez no lo dejes.",
+  nombre: "Emiliano Peralta",
+  rol: "Profesor de Educación Física · Preparador Físico · Técnico Universitario en Actividad Física",
+  slogan: [
+    "Te enseño a moverte y entrenar para alcanzar tus objetivos.",
+    "Entrenamiento basado en evidencia, adaptado a tu contexto.",
+  ],
+  tagline: "Entreno personas, no rutinas.",
+  botones: {
+    trabajar: "Trabajemos juntos",
+    formacion: "Conocé mi formación",
+    experiencia: "Mi experiencia",
+  },
   /* Foto de la portada.
      modo "foto"    -> la imagen llena el bloque (foto normal, con fondo).
      modo "recorte" -> la imagen se apoya abajo sin recortarse, sobre un
-                       fondo oscuro con halo lima. Es el modo para la foto
+                       fondo oscuro con halo detrás. Es el modo para la foto
                        de Emi sin fondo (PNG con transparencia). */
   foto: {
     src: "/images/emi-hero.png",
@@ -56,34 +69,30 @@ export const hero = {
     /* Solo se usa en modo "recorte": va detrás, oscurecido y desenfocado. */
     fondo: "/images/hero-fondo.jpg",
   },
-  ctaPrimario: "Quiero empezar",
-  ctaSecundario: "Ver planes",
   watermark: "PERALTA",
 };
 
 export const stats = [
   { valor: "4664", sufijo: "hs", label: "de formación universitaria" },
   { valor: "6", sufijo: "+", label: "clubes y centros donde trabajé" },
-  { valor: "6-80", sufijo: "", label: "años: entreno a todas las edades" },
   { valor: "100", sufijo: "%", label: "de los planes son individuales" },
 ];
 
 export const perfiles = {
   titulo: "Entreno personas, no rutinas",
   bajada:
-    "Cada historia necesita otra lógica de trabajo. Estas son las que vengo acompañando hace años.",
+    "El entrenamiento no empieza con una rutina. Empieza con una persona. Sus objetivos, su biografía motriz, sus posibilidades, su contexto y aquello que quiere conseguir. A partir de ahí evalúo, planifico y ajusto el entrenamiento.",
   items: [
     {
       titulo: "Nunca entrenaste",
-      texto:
-        "Empezamos de cero y sin vergüenza. Primero aprendés a moverte, después sumamos carga.",
+      texto: "No te preocupes, la planificación se adapta a vos. Se aprende desde 0.",
       img: "/images/metodo.jpg",
       alt: "Persona entrenando en el gimnasio",
     },
     {
       titulo: "Volvés de una lesión",
       texto:
-        "Recuperás la confianza en tu cuerpo. Trabajo con tu kinesiólogo para que el alta no sea el final.",
+        "Adaptamos el entrenamiento para que contribuya a tu recuperación. Trabajo interdisciplinar con tu kinesiólogo.",
       img: "/images/about.jpg",
       alt: "Persona entrenando con barra en el gimnasio",
     },
@@ -97,48 +106,216 @@ export const perfiles = {
     {
       titulo: "Competís",
       texto:
-        "Preparación física de rugby en plantel superior. Rendimiento medido, no improvisado.",
+        "Te ayudo a desarrollar tu potencial y rendimiento. Entrenamiento medido, no improvisado.",
       img: "/images/perfil-deportistas.jpg",
       alt: "Deportista entrenando fuerza en el gimnasio",
     },
   ],
 };
 
+/* ---- Formación ------------------------------------------------------- */
+
+export const formacionSeccion = {
+  titulo: "Formación",
+};
+
+export const formacionCredenciales = [
+  {
+    titulo: "Profesorado Universitario de Educación Física",
+    lugar: "FEF IPEF",
+    detalle: "4.º año · 2864 hs",
+  },
+  {
+    titulo: "Tecnicatura Universitaria en Actividad Física",
+    lugar: "Universidad Provincial de Córdoba",
+    detalle: "1800 hs",
+  },
+  {
+    titulo: "Preparador Físico Nivel 1",
+    lugar: "Unión Argentina de Rugby (UAR)",
+    detalle: "",
+  },
+];
+
+export const capacitacionesSeccion = {
+  titulo: "Cursos y capacitaciones",
+};
+
+export const capacitaciones = [
+  {
+    titulo: "RCP y primeros socorros",
+    lugar: "Defensa Civil Córdoba",
+    detalle: "Actualización continua · 2024, 2025, 2026",
+  },
+  {
+    titulo: "Jornada internacional sobre entrenamiento, evaluación y actividad física",
+    lugar: "Capacitaciones Urban",
+    detalle: "Presencial · 12 hs · 27/09/25",
+  },
+  {
+    titulo: "Congreso internacional sobre ejercicio físico y salud",
+    lugar: "Cámara de Gimnasios de Córdoba",
+    detalle: "Presencial · 12 hs",
+  },
+];
+
+export const areasExperienciaSeccion = {
+  titulo: "Áreas de experiencia",
+};
+
+export const areasExperiencia = [
+  { titulo: "Preparación física", texto: "Rugby, plantel superior." },
+  {
+    titulo: "Entrenamiento personalizado",
+    texto: "Salud, fuerza, composición corporal y rendimiento.",
+  },
+  {
+    titulo: "Educación física",
+    texto: "Nivel inicial, primario, secundario e iniciación deportiva.",
+  },
+  {
+    titulo: "Trabajo interdisciplinario",
+    texto: "Articulación con profesionales de nutrición, kinesiología y psicología.",
+  },
+  {
+    titulo: "Trabajo con discapacidad en pileta",
+    texto: "Introducción al medio acuático, natación y juegos.",
+  },
+];
+
+/* ---- Experiencia (práctica real, con foto) ---------------------------- */
+
+export const experienciaSeccion = {
+  titulo: "Mi experiencia en la práctica",
+};
+
+export const experiencia = [
+  {
+    id: "rugby",
+    titulo: "Rugby, plantel superior",
+    lugar: "Club Universitario de Córdoba",
+    texto:
+      "Preparación física, reducción de riesgo lesional y desarrollo de capacidades condicionales para jugadores.",
+    img: "/images/tr-universitario.jpg",
+    alt: "Plantel de rugby del Club Universitario Córdoba",
+  },
+  {
+    id: "futbol",
+    titulo: "Fútbol",
+    lugar: "Escuela de Deportes León XIII",
+    texto:
+      "Trabajo con jóvenes de entre 6 y 12 años en iniciación deportiva para el desarrollo de sus capacidades físicas, lúdicas y motrices.",
+    img: "/images/tr-leon-xiii.jpg",
+    alt: "Equipo de fútbol infantil de la Escuela de Deportes León XIII",
+  },
+  {
+    id: "personalizado",
+    titulo: "Entrenamiento personalizado",
+    lugar: "",
+    texto:
+      "Evaluación, planificación y seguimiento de personas con diferentes objetivos y niveles de experiencia.",
+    img: "/images/about.jpg",
+    alt: "Entrenamiento de fuerza con barra",
+  },
+  {
+    id: "educacion-fisica",
+    titulo: "Educación física",
+    lugar: "",
+    texto: "Diseño y desarrollo de propuestas pedagógicas en diferentes niveles educativos.",
+    img: "/images/metodo.jpg",
+    alt: "Persona entrenando en el gimnasio",
+  },
+  {
+    id: "pileta",
+    titulo: "Discapacidad en pileta",
+    lugar: "T.E.A. · Todos Estimulados Aprendemos",
+    texto:
+      "Trabajo con niños y adultos con discapacidad en pileta, sobre los miedos y temores, introducción al medio acuático y natación.",
+    img: "/images/perfil-pileta.jpg",
+    alt: "Persona nadando en una pileta con andariveles",
+  },
+];
+
+/* TODO: Emi va a mandar fotos reales de cada uno de estos espacios. */
+export const espaciosDondeTrabaje = {
+  titulo: "Espacios donde trabajé",
+  lugares: ["MB Entrenamiento", "MC Fitness Las Delicias", "Gimnasio BIGG", "Quivox"],
+};
+
+/* ---- Filosofía + método ------------------------------------------------ */
+
+export const filosofia = {
+  eyebrow: "Mi forma de entender el entrenamiento",
+  titulo: "No hay una rutina universal",
+  texto:
+    "Cada persona llega al entrenamiento con su historia, sus posibilidades, su contexto y sus objetivos. Por eso, antes de programar, buscamos conocer a la persona, evaluar sus necesidades y entender qué estrategias pueden ayudarla a avanzar.",
+  pasos: ["Contexto", "Evaluación", "Planificación", "Entrenamiento", "Seguimiento"],
+};
+
 export const metodo = {
-  titulo: "Cómo trabajamos",
-  bajada:
-    "Cuatro pasos. Sin rutinas copiadas de internet ni planes que le sirven a cualquiera.",
+  titulo: "¿Cómo trabajamos?",
   pasos: [
     {
       n: "01",
       icono: "chat" as const,
-      titulo: "Hablamos",
-      texto:
-        "Me contás qué buscás, cuánto tiempo tenés y cuáles son tus objetivos. Sin compromiso.",
+      titulo: "Conocemos tu contexto",
+      texto: "Objetivos, experiencia, disponibilidad, necesidades y características individuales.",
     },
     {
       n: "02",
       icono: "medir" as const,
       titulo: "Evaluamos",
-      texto:
-        "Antes de programar, medimos: movilidad, fuerza y punto de partida real.",
+      texto: "Utilizamos diferentes herramientas para conocer tu punto de partida.",
     },
     {
       n: "03",
       icono: "plan" as const,
-      titulo: "Armo tu plan",
-      texto:
-        "Recibís la programación con ejercicios, series, cargas y videos, lista para usar.",
+      titulo: "Planificamos",
+      texto: "Diseñamos un entrenamiento acorde a tus objetivos y posibilidades.",
     },
     {
       n: "04",
+      icono: "entrenar" as const,
+      titulo: "Entrenamos",
+      texto: "Aplicamos la planificación y aprendemos a movernos y entrenar.",
+    },
+    {
+      n: "05",
       icono: "ajuste" as const,
       titulo: "Ajustamos",
-      texto:
-        "Revisamos cada semana. El plan cambia con vos: por eso funciona a largo plazo.",
+      texto: "El entrenamiento cambia a medida que vos cambiás.",
     },
   ],
 };
+
+/* ---- Servicios + planes ------------------------------------------------ */
+
+export const serviciosSeccion = {
+  titulo: "¿En qué puedo ayudarte?",
+};
+
+export const servicios = [
+  {
+    titulo: "Salud y calidad de vida",
+    texto: "Fuerza, movilidad, composición corporal y autonomía.",
+  },
+  {
+    titulo: "Rendimiento deportivo",
+    texto: "Preparación física y desarrollo de capacidades específicas.",
+  },
+  {
+    titulo: "Entrenamiento personalizado",
+    texto: "Programación individual según objetivos, experiencia y contexto.",
+  },
+  {
+    titulo: "Entrenamiento online",
+    texto: "Planificación y seguimiento a distancia.",
+  },
+  {
+    titulo: "Educación y asesoramiento",
+    texto: "Contenido relacionado con actividad física, entrenamiento y hábitos saludables.",
+  },
+];
 
 export const planesSeccion = {
   titulo: "Elegí tu plan",
@@ -193,6 +370,24 @@ export const planes = [
   },
 ];
 
+/* ---- Sobre mí ----------------------------------------------------------- */
+
+export const sobreMiSeccion = {
+  titulo: "Sobre mí",
+};
+
+export const sobreMiTexto = [
+  "Desde chico, el movimiento formó parte de mi vida. Crecí jugando en la calle, andando en bicicleta y explorando distintas formas de moverme, mucho antes de pensar que algún día eso se convertiría en mi profesión.",
+  "Durante la adolescencia encontré en la natación una nueva forma de relacionarme con el movimiento: esta vez desde la práctica deportiva y la competencia. Con el tiempo, esa curiosidad fue creciendo y me llevó a experimentar con disciplinas muy diferentes entre sí: ciclismo, boxeo, gimnasio, calistenia, escalada, karting y muchas otras. Cada una me permitió conocer nuevas posibilidades del cuerpo, nuevas maneras de entrenar y, sobre todo, nuevas formas de disfrutar del movimiento.",
+  "La educación también estuvo siempre presente en mi historia. En mi familia, la docencia atraviesa generaciones: mis abuelos y mis padres son docentes. Quizás por eso, aunque no siempre lo tuviera completamente claro, siempre supe que quería dedicarme a algo que me permitiera acompañar y ayudar a otras personas.",
+  "Elegí formarme como Profesor de Educación Física y como entrenador porque encontré allí la posibilidad de unir tres cosas que me apasionan: ayudar a los demás, la educación como herramienta de transformación y el movimiento.",
+  "Hoy prefiero hablar de entrenamiento.",
+  "Porque entrenar no es solamente realizar ejercicios. Es aprender a conocer nuestro cuerpo, desarrollar nuestras capacidades y adquirir herramientas que nos permitan movernos mejor, afrontar nuevos desafíos y alcanzar nuestros objetivos.",
+  "Ese es el lugar desde el que entiendo mi profesión: utilizar el movimiento y el entrenamiento como herramientas de aprendizaje, desarrollo y transformación.",
+];
+
+/* ---- Testimonios --------------------------------------------------------- */
+
 export const testimoniosSeccion = {
   titulo: "Lo que dicen quienes ya entrenan",
 };
@@ -219,87 +414,16 @@ export const testimonios = [
   },
 ];
 
-export const sobreMi = {
-  titulo: "Quién te va a entrenar",
-  bajada:
-    "Emiliano Peralta. Técnico universitario en Actividad Física (UPC) y profesorado en curso. Cinco años entrenando en clubes, gimnasios y centros de salud de Córdoba.",
+/* TODO: pegar acá el enlace real de la ficha de Google Business de Emi
+   (Google Maps → Compartir → "Pedir reseñas" te da este link corto). Sin
+   ese enlace real el botón no puede apuntar a ningún lado: no se inventan
+   reseñas ni una calificación falsa, eso va en contra de las políticas de
+   Google y sería engañoso para quien visite el sitio. */
+export const googleReview = {
+  texto: "Si ya entrenaste conmigo, tu reseña ayuda a que más gente me encuentre.",
+  boton: "Dejar reseña en Google",
+  url: "",
 };
-
-export const trayectoria = [
-  {
-    id: "leon-xiii",
-    anio: "2023",
-    periodo: "Marzo 2023 — Septiembre 2024",
-    rol: "Profe de fútbol",
-    lugar: "Escuela de Deportes León XIII",
-    texto:
-      "Escuelita de iniciación deportiva para chicos y chicas de 6 a 12 años: habilidades motrices básicas, desarrollo técnico-táctico y arbitraje.",
-    img: "/images/tr-leon-xiii.jpg",
-    alt: "Equipo de fútbol infantil de la Escuela de Deportes León XIII",
-  },
-  {
-    id: "mb",
-    anio: "2024",
-    periodo: "Noviembre 2024 — Abril 2026",
-    rol: "Profe en centro de salud",
-    lugar: "MB Entrenamiento",
-    texto:
-      "Evaluación, planificación y seguimiento para adultos mayores, personas lesionadas y deportistas, junto a nutricionistas, psicólogas y kinesiólogas.",
-    img: "/images/about.jpg",
-    alt: "Entrenamiento de fuerza con barra",
-  },
-  {
-    id: "tea",
-    anio: "2025",
-    periodo: "Abril 2025 — Mayo 2026",
-    rol: "Profe en pileta",
-    lugar: "T.E.A. · Todos Estimulados Aprendemos",
-    texto:
-      "Introducción al medio acuático y natación para niños, adolescentes y adultos con discapacidad. Actividad adaptada a cada persona.",
-    img: "/images/perfil-pileta.jpg",
-    alt: "Persona nadando en una pileta con andariveles",
-  },
-  {
-    id: "universitario",
-    anio: "2025",
-    periodo: "Enero 2025 — Actualidad",
-    rol: "Preparador físico de rugby",
-    lugar: "Club Universitario Córdoba",
-    texto:
-      "Plantel superior, pre-intermedia y equipos A y B. Evaluación, planificación, gestión de cargas y control de fatiga con el cuerpo técnico.",
-    img: "/images/tr-universitario.jpg",
-    alt: "Plantel de rugby del Club Universitario Córdoba",
-  },
-  {
-    id: "mc-fitness",
-    anio: "2025",
-    periodo: "Noviembre 2025 — Actualidad",
-    rol: "Profe de sala",
-    lugar: "Gimnasio MC Fitness",
-    texto:
-      "Planificación, entrenamiento y seguimiento para todas las edades: readaptación física, salud, estética y deporte.",
-    img: "/images/srv-centros.jpg",
-    alt: "Sala de musculación de un gimnasio",
-  },
-];
-
-export const formacion = [
-  {
-    titulo: "Tecnicatura Universitaria en Actividad Física",
-    lugar: "Facultad de Educación Física · UPC",
-    detalle: "Finalizada · 1800 hs presenciales",
-  },
-  {
-    titulo: "Profesorado Universitario en Educación Física",
-    lugar: "Facultad de Educación Física · UPC",
-    detalle: "En curso · 4.º año · 2864 hs",
-  },
-  {
-    titulo: "Preparador Físico Nivel 1 · UAR",
-    lugar: "Unión Argentina de Rugby",
-    detalle: "2026 · RCP y primeros socorros vigentes",
-  },
-];
 
 export const faqSeccion = {
   titulo: "Antes de escribirme",

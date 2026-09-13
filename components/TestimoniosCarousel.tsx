@@ -18,11 +18,16 @@ export default function TestimoniosCarousel({
   const [activo, setActivo] = useState(0);
   const [pausado, setPausado] = useState(false);
 
+  /* Movemos solo el scroll horizontal del carrusel con scrollTo().
+     Ojo: scrollIntoView() con block:"nearest" puede arrastrar también el
+     scroll VERTICAL de toda la página en mobile si la sección no está
+     perfectamente encuadrada — eso causaba que la página "se moviera sola"
+     hacia abajo durante el avance automático. */
   const irA = useCallback((i: number) => {
     const el = pistaRef.current;
-    if (!el) return;
-    const tarjeta = el.children[i] as HTMLElement | undefined;
-    tarjeta?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    const tarjeta = el?.children[i] as HTMLElement | undefined;
+    if (!el || !tarjeta) return;
+    el.scrollTo({ left: tarjeta.offsetLeft - el.offsetLeft, behavior: "smooth" });
   }, []);
 
   /* Avance automático cada 10s, en loop. */

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { hero, cta } from "@/lib/content";
 import { HeroHeader, StickyNav, MenuOverlay } from "./Nav";
-import { Play, Whatsapp } from "./icons";
+import { Whatsapp, Arrow } from "./icons";
 
 export default function Hero() {
   const [menu, setMenu] = useState(false);
@@ -36,18 +36,24 @@ export default function Hero() {
               </span>
 
               <div className="relative z-10 flex flex-col items-center text-center">
-                <h1 className="display text-[clamp(1.6rem,7vw,2.6rem)] lg:text-[42px] xl:text-[55px] 2xl:text-[66px]">
-                  {hero.titulo.map((linea, i) => (
-                    <span key={linea} className="block">
-                      {linea}
-                      {i === hero.titulo.length - 1 ? (
-                        <span className="text-lime-2">.</span>
-                      ) : null}
-                    </span>
-                  ))}
+                <h1 className="display text-[clamp(2rem,6.4vw,3.4rem)]">
+                  {hero.nombre}
+                  <span className="text-lime-2">.</span>
                 </h1>
 
-                <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+                <p className="prose-body mt-4 max-w-[42ch] text-[14px] font-medium text-ink/60 sm:text-[15px]">
+                  {hero.rol}
+                </p>
+
+                <div className="mt-6 flex max-w-[46ch] flex-col gap-1">
+                  {hero.slogan.map((linea) => (
+                    <p key={linea} className="text-[15.5px] font-semibold text-ink sm:text-base">
+                      {linea}
+                    </p>
+                  ))}
+                </div>
+
+                <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
                   <a
                     href={cta.principal}
                     target="_blank"
@@ -55,39 +61,21 @@ export default function Hero() {
                     className="btn btn-lime"
                   >
                     <Whatsapp className="h-4 w-4" />
-                    {hero.ctaPrimario}
+                    {hero.botones.trabajar}
                   </a>
-                  <a href="#planes" className="btn btn-ghost">
-                    <Play className="h-4 w-4" />
-                    {hero.ctaSecundario}
+                  <a href="#formacion" className="btn btn-ghost">
+                    {hero.botones.formacion}
+                    <Arrow className="h-4 w-4" />
+                  </a>
+                  <a href="#experiencia" className="btn btn-ghost">
+                    {hero.botones.experiencia}
+                    <Arrow className="h-4 w-4" />
                   </a>
                 </div>
 
-                {/* Prueba social breve */}
-                <div className="mt-11 flex w-full max-w-sm items-center justify-center gap-4 border-t hairline pt-6">
-                  <div className="flex -space-x-2.5">
-                    {["A", "M", "L", "R"].map((l, i) => (
-                      <span
-                        key={l}
-                        className="grid h-8 w-8 place-items-center rounded-full border-2 border-bone font-mono text-[10px] font-semibold text-bone"
-                        style={{
-                          background: [
-                            "#2c2e33",
-                            "#3d4048",
-                            "#4f535c",
-                            "#616670",
-                          ][i],
-                        }}
-                        aria-hidden="true"
-                      >
-                        {l}
-                      </span>
-                    ))}
-                  </div>
-                  <p className="max-w-[26ch] text-left text-[13px] leading-snug text-ink/55">
-                    Personas de <strong className="font-semibold text-ink">6 a 80 años</strong>{" "}
-                    entrenando con plan propio.
-                  </p>
+                {/* Bajada corta hacia la sección de perfiles. */}
+                <div className="mt-11 w-full max-w-sm border-t hairline pt-6">
+                  <p className="text-[14px] font-semibold text-ink/70">{hero.tagline}</p>
                 </div>
               </div>
             </div>
@@ -106,7 +94,7 @@ export default function Hero() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/25" />
 
-                  {/* Halo lima: separa la silueta del fondo */}
+                  {/* Halo: separa la silueta del fondo */}
                   <div
                     aria-hidden="true"
                     className="absolute inset-0"
@@ -154,7 +142,7 @@ export default function Hero() {
                 <p className="mt-1.5 text-[13px] text-ink/55">Club Universitario Córdoba</p>
               </div>
 
-              {/* Barra lima inferior (guiño al layout de referencia) */}
+              {/* Barra inferior (guiño al layout de referencia) */}
               <div className="absolute bottom-0 right-0 flex h-9 w-[62%] items-center justify-end gap-1 bg-lime pr-4 sm:w-[52%]">
                 <span className="text-[12px] font-medium text-ink/70">Córdoba · Argentina</span>
               </div>

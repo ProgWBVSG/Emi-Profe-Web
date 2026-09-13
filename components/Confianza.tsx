@@ -1,15 +1,14 @@
 import {
   testimonios,
   testimoniosSeccion,
-  trayectoria,
-  formacion,
-  sobreMi,
-  stats,
+  googleReview,
+  sobreMiSeccion,
+  sobreMiTexto,
 } from "@/lib/content";
 import Reveal from "./Reveal";
 import { Card, SectionHead, pad } from "./ui";
-import TrayectoriaTimeline from "./ui/trayectoria-timeline";
 import TestimoniosCarousel from "./TestimoniosCarousel";
+import { GoogleG } from "./icons";
 
 function TarjetaTestimonio({
   texto,
@@ -72,6 +71,22 @@ export function Testimonios() {
             </Reveal>
           ))}
         </div>
+
+        {/* Reseñas de Google: ayuda al posicionamiento local en Google. */}
+        {googleReview.url ? (
+          <Reveal delay={200} className="mt-10 text-center">
+            <p className="text-[14px] text-bone/60">{googleReview.texto}</p>
+            <a
+              href={googleReview.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-lime mt-4"
+            >
+              <GoogleG className="h-4 w-4" />
+              {googleReview.boton}
+            </a>
+          </Reveal>
+        ) : null}
       </div>
     </Card>
   );
@@ -79,46 +94,24 @@ export function Testimonios() {
 
 export function SobreMi() {
   return (
-    <Card id="trayectoria">
+    <Card id="sobre-mi">
       <div className={pad}>
         <SectionHead
           titulo={
             <>
-              {sobreMi.titulo}
+              {sobreMiSeccion.titulo}
               <span className="text-lime-2">.</span>
             </>
           }
-          bajada={sobreMi.bajada}
         />
 
-        <Reveal delay={80} className="mx-auto mt-12 max-w-5xl lg:mt-16">
-          <TrayectoriaTimeline hitos={trayectoria} intervalo={5000} />
-        </Reveal>
-
-        <Reveal delay={140} className="mx-auto mt-4 grid max-w-5xl gap-3 sm:grid-cols-3">
-          {formacion.map((f) => (
-            <div key={f.titulo} className="rounded-[22px] bg-ink p-6 text-bone">
-              <p className="text-[14.5px] font-semibold leading-snug">{f.titulo}</p>
-              <p className="mt-2 text-[13px] text-bone/55">{f.lugar}</p>
-              <p className="mt-0.5 text-[13px] text-lime">{f.detalle}</p>
-            </div>
+        <div className="mx-auto mt-12 flex max-w-2xl flex-col gap-5 lg:mt-16">
+          {sobreMiTexto.map((parrafo, i) => (
+            <Reveal key={i} delay={i * 40}>
+              <p className="prose-body text-[15.5px] text-ink/70 sm:text-base">{parrafo}</p>
+            </Reveal>
           ))}
-        </Reveal>
-
-        {/* Números en chico: acompañan, no compiten con la trayectoria. */}
-        <Reveal delay={180}>
-          <div className="mx-auto mt-10 flex max-w-5xl flex-wrap items-center justify-center gap-x-8 gap-y-2 border-t hairline pt-6">
-            {stats.map((s) => (
-              <p key={s.label} className="text-[12.5px] text-ink/45">
-                <span className="font-semibold text-ink/70">
-                  {s.valor}
-                  {s.sufijo}
-                </span>{" "}
-                {s.label}
-              </p>
-            ))}
-          </div>
-        </Reveal>
+        </div>
       </div>
     </Card>
   );

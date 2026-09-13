@@ -99,6 +99,18 @@ export const Plan = ({ className = "h-5 w-5" }: P) => (
   </svg>
 );
 
+export const Entrenar = ({ className = "h-5 w-5" }: P) => (
+  <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+    <path
+      d="M6.5 9v6M4 10v4m16-4v4m-2.5-5v6M9 12h6"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 export const Ajuste = ({ className = "h-5 w-5" }: P) => (
   <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
     <path
@@ -107,6 +119,31 @@ export const Ajuste = ({ className = "h-5 w-5" }: P) => (
       strokeWidth="1.8"
       strokeLinecap="round"
       strokeLinejoin="round"
+    />
+  </svg>
+);
+
+/** Logo de Google simplificado a 2 colores, para el botón de reseñas. */
+export const GoogleG = ({ className = "h-4 w-4" }: P) => (
+  <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+    <path
+      fill="currentColor"
+      d="M21.6 12.23c0-.7-.06-1.38-.18-2.03H12v3.84h5.4a4.62 4.62 0 0 1-2 3.03v2.5h3.24c1.9-1.75 2.96-4.33 2.96-7.34Z"
+      opacity=".55"
+    />
+    <path
+      fill="currentColor"
+      d="M12 22c2.7 0 4.96-.9 6.64-2.43l-3.24-2.5c-.9.6-2.05.96-3.4.96-2.6 0-4.8-1.76-5.6-4.12H3.06v2.58A10 10 0 0 0 12 22Z"
+    />
+    <path
+      fill="currentColor"
+      d="M6.4 13.91a5.98 5.98 0 0 1 0-3.82V7.51H3.06a10 10 0 0 0 0 8.98l3.34-2.58Z"
+      opacity=".7"
+    />
+    <path
+      fill="currentColor"
+      d="M12 6.06c1.47 0 2.79.5 3.83 1.5l2.87-2.87A9.7 9.7 0 0 0 12 2a10 10 0 0 0-8.94 5.51l3.34 2.58c.8-2.36 3-4.03 5.6-4.03Z"
+      opacity=".85"
     />
   </svg>
 );

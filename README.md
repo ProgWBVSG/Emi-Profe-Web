@@ -60,29 +60,36 @@ lima detrás de la silueta. En modo `foto` la imagen llena el bloque.
 
 ```
 app/
-  layout.tsx      metadatos, fuentes, JSON-LD para Google
-  page.tsx        orden de las secciones
-  globals.css     tokens de diseño (colores, tipografía, easings)
+  layout.tsx        metadatos, fuentes, JSON-LD para Google
+  page.tsx          orden de las secciones (ver abajo)
+  globals.css       tokens de diseño (colores, tipografía, easings)
 components/
-  Hero.tsx        portada + navegación
-  Nav.tsx         cabecera, barra flotante y menú
-  Prueba.tsx      cinta de instituciones + números
-  Servicios.tsx   servicios + para quién
-  Oferta.tsx      método + planes
-  Confianza.tsx   testimonios + trayectoria
-  Cierre.tsx      FAQ, CTA final, footer, botón flotante
-  Reveal.tsx      animación de entrada al hacer scroll
-  ui.tsx          tarjeta y encabezado de sección
-lib/content.ts    TODO el contenido editable
-scripts/shoot.js  capturas automáticas para revisar el diseño
+  Hero.tsx          portada: nombre, rol, slogan, botones y tagline
+  Nav.tsx           cabecera, barra flotante y menú
+  Perfiles.tsx      "Entreno personas, no rutinas"
+  Formacion.tsx     títulos, capacitaciones y áreas de experiencia
+  Experiencia.tsx   trabajos reales, con foto
+  Oferta.tsx        método (filosofía + 5 pasos), servicios y planes
+  Confianza.tsx     testimonios (+ reseña de Google) y "Sobre mí"
+  TestimoniosCarousel.tsx  carrusel mobile de testimonios con autoplay
+  Cierre.tsx        FAQ flotante, CTA final, footer, botón de WhatsApp
+  Reveal.tsx        animación de entrada al hacer scroll
+  ui.tsx            Card, SectionHead, FotoTarjeta, GrillaCarrusel
+lib/content.ts      TODO el contenido editable
+scripts/shoot.js    capturas automáticas para revisar el diseño
 ```
+
+Orden de las secciones (`app/page.tsx`): Portada → Entreno personas, no
+rutinas → Formación → Experiencia → Método → Servicios → Planes → Sobre mí →
+Testimonios → CTA final → Footer.
 
 ## Sistema de diseño
 
 Definido con tokens en `app/globals.css`:
 
-- **Colores**: `ink` (negro), `bone` (hueso), `lime` (verde ácido de marca).
-- **Tipografías**: Archivo para títulos y texto, JetBrains Mono para
+- **Colores**: `ink` (negro), `bone` (hueso), `lime` (así se llama el token,
+  aunque hoy es rojo coral de marca — ver `--color-lime` en `globals.css`).
+- **Tipografías**: Montserrat para títulos y texto, JetBrains Mono para
   etiquetas y números.
 - **Layout**: cada sección es una tarjeta redondeada sobre el fondo lima.
 - **Movimiento**: curvas propias (`--ease-out-strong`), animaciones por debajo
