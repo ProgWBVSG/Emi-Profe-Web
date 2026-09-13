@@ -189,7 +189,7 @@ export default function TrayectoriaTimeline({
               {hito.periodo ? (
                 <p className="text-[13px] text-ink/45">{hito.periodo}</p>
               ) : null}
-              <h3 className={`display text-[clamp(1.5rem,2.6vw,2.1rem)] ${hito.periodo ? "mt-2" : ""}`}>
+              <h3 className={`display text-ink text-[clamp(1.5rem,2.6vw,2.1rem)] ${hito.periodo ? "mt-2" : ""}`}>
                 {hito.rol}
               </h3>
               {hito.lugar ? (
