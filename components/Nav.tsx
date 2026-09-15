@@ -1,22 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { nav, site, cta } from "@/lib/content";
-import { Whatsapp } from "./icons";
-
-/** Foto de Emi en el header, en vez del logo abstracto. */
-function Avatar({ className = "h-8 w-8" }: { className?: string }) {
-  return (
-    <Image
-      src="/images/emi-avatar.png"
-      alt={site.nombre}
-      width={64}
-      height={64}
-      className={`rounded-full border border-ink/10 object-cover ${className}`}
-    />
-  );
-}
+import { Logo, Whatsapp } from "./icons";
 
 /* ------------------------------------------------------------------ */
 /* Cabecera dentro de la tarjeta del hero                              */
@@ -29,7 +15,7 @@ export function HeroHeader({ onOpenMenu }: { onOpenMenu: () => void }) {
           href="#top"
           className="flex items-center gap-3 border-r hairline px-5 py-5 sm:px-7"
         >
-          <Avatar className="h-9 w-9" />
+          <Logo className="h-8 w-8 text-ink" />
           <span className="display text-[15px] leading-none tracking-tight sm:text-base">
             EMI
             <br />
@@ -92,7 +78,7 @@ export function StickyNav({ onOpenMenu }: { onOpenMenu: () => void }) {
     >
       <nav className="flex max-w-full items-center gap-1 rounded-full border border-ink/10 bg-bone/85 p-1.5 shadow-[0_10px_40px_-12px_rgba(0,0,0,0.35)] backdrop-blur-xl">
         <a href="#top" className="ml-1 mr-1 flex shrink-0 items-center" aria-label="Inicio">
-          <Avatar className="h-8 w-8" />
+          <Logo className="h-8 w-8 text-ink" />
         </a>
 
         <ul className="hidden items-center gap-0.5 lg:flex">

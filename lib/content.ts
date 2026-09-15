@@ -63,9 +63,9 @@ export const hero = {
                        fondo oscuro con halo detrás. Es el modo para la foto
                        de Emi sin fondo (PNG con transparencia). */
   foto: {
-    src: "/images/emi-hero.png",
-    alt: "Emiliano Peralta, profe de educación física",
-    modo: "recorte" as "foto" | "recorte",
+    src: "/images/emi-foto.jpg",
+    alt: "Emiliano Peralta, profe de educación física, en el gimnasio",
+    modo: "foto" as "foto" | "recorte",
     /* Solo se usa en modo "recorte": va detrás, oscurecido y desenfocado. */
     fondo: "/images/hero-fondo.jpg",
   },
