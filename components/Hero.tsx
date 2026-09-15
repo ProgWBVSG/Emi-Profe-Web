@@ -40,13 +40,17 @@ export default function Hero() {
                   {hero.rol}
                 </p>
 
-                <h1 className="display mt-4 max-w-xl text-[clamp(1.7rem,3.6vw,2.75rem)] leading-[1.12]">
-                  {hero.slogan.map((linea) => (
+                <h1 className="display mt-4 text-[clamp(1.15rem,4.9vw,1.85rem)] leading-[1.15] lg:text-[29px] xl:text-[38px] 2xl:text-[46px]">
+                  {hero.titulo.map((linea) => (
                     <span key={linea} className="block">
                       {linea}
                     </span>
                   ))}
                 </h1>
+
+                <p className="prose-body mt-5 max-w-[42ch] text-[14.5px] font-medium text-ink/60 sm:text-[15.5px]">
+                  {hero.subtitulo}
+                </p>
 
                 <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
                   <a

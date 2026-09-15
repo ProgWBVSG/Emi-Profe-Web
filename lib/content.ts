@@ -47,10 +47,9 @@ export const nav = [
 export const hero = {
   nombre: "Emiliano Peralta",
   rol: "Profesor de Educación Física · Preparador Físico · Técnico Universitario en Actividad Física",
-  slogan: [
-    "Te enseño a moverte y entrenar para alcanzar tus objetivos.",
-    "Entrenamiento basado en evidencia, adaptado a tu contexto.",
-  ],
+  /* Título grande del hero, ya partido en las dos líneas que se muestran. */
+  titulo: ["Te enseño a moverte y entrenar", "para alcanzar tus objetivos."],
+  subtitulo: "Entrenamiento basado en evidencia, adaptado a tu contexto.",
   tagline: "Entreno personas, no rutinas.",
   botones: {
     trabajar: "Trabajemos juntos",
