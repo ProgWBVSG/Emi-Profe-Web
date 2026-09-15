@@ -36,22 +36,17 @@ export default function Hero() {
               </span>
 
               <div className="relative z-10 flex flex-col items-center text-center">
-                <h1 className="display text-[clamp(2rem,6.4vw,3.4rem)]">
-                  {hero.nombre}
-                  <span className="text-lime-2">.</span>
-                </h1>
-
-                <p className="prose-body mt-4 max-w-[42ch] text-[14px] font-medium text-ink/60 sm:text-[15px]">
+                <p className="max-w-[42ch] text-[13px] font-semibold uppercase tracking-[0.08em] text-ink/50 sm:text-[13.5px]">
                   {hero.rol}
                 </p>
 
-                <div className="mt-6 flex max-w-[46ch] flex-col gap-1">
+                <h1 className="display mt-4 max-w-xl text-[clamp(1.7rem,3.6vw,2.75rem)] leading-[1.12]">
                   {hero.slogan.map((linea) => (
-                    <p key={linea} className="text-[15.5px] font-semibold text-ink sm:text-base">
+                    <span key={linea} className="block">
                       {linea}
-                    </p>
+                    </span>
                   ))}
-                </div>
+                </h1>
 
                 <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
                   <a
