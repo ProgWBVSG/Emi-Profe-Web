@@ -115,7 +115,10 @@ export default function Hero() {
                 className={
                   recorte
                     ? "object-contain object-bottom pt-8 sm:pt-12"
-                    : "object-cover object-center"
+                    /* Mobile: el bloque es corto y ancho, así que anclamos
+                       arriba para que la cara nunca quede cortada. Desktop:
+                       el bloque es alto, ahí sí se ve bien centrada. */
+                    : "object-cover object-top lg:object-center"
                 }
               />
               {/* Degradado inferior para asentar el contenido */}
