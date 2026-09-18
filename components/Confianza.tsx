@@ -1,14 +1,47 @@
+import type { ReactNode } from "react";
 import {
   testimonios,
   testimoniosSeccion,
   googleReview,
   sobreMiSeccion,
   sobreMiTexto,
+  sobreMiDestacados,
 } from "@/lib/content";
 import Reveal from "./Reveal";
 import { Card, SectionHead, pad } from "./ui";
 import TestimoniosCarousel from "./TestimoniosCarousel";
 import { GoogleG } from "./icons";
+
+/**
+ * Parte un párrafo en sus frases y envuelve las que aparecen en `frases`
+ * con estilo destacado (rojo, más grande y en negrita). No modifica el
+ * texto: solo lo separa en partes iguales usando indexOf.
+ */
+function conDestacados(texto: string, frases: string[]): ReactNode[] {
+  if (frases.length === 0) return [texto];
+
+  const partes: ReactNode[] = [];
+  let restante = texto;
+  let cursor = 0;
+
+  frases.forEach((frase) => {
+    const idx = restante.indexOf(frase);
+    if (idx === -1) return; // la frase no aparece tal cual: se ignora, no se rompe nada.
+    partes.push(restante.slice(0, idx));
+    partes.push(
+      <strong
+        key={cursor++}
+        className="font-extrabold text-lime-2 sm:text-[1.08em]"
+      >
+        {frase}
+      </strong>
+    );
+    restante = restante.slice(idx + frase.length);
+  });
+  partes.push(restante);
+
+  return partes;
+}
 
 function TarjetaTestimonio({
   texto,
@@ -108,7 +141,9 @@ export function SobreMi() {
         <div className="mx-auto mt-12 flex max-w-2xl flex-col gap-5 lg:mt-16">
           {sobreMiTexto.map((parrafo, i) => (
             <Reveal key={i} delay={i * 40}>
-              <p className="prose-body text-[15.5px] text-ink/70 sm:text-base">{parrafo}</p>
+              <p className="prose-body text-[15.5px] text-ink/70 sm:text-base">
+                {conDestacados(parrafo, sobreMiDestacados[i] ?? [])}
+              </p>
             </Reveal>
           ))}
         </div>

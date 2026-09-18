@@ -11,6 +11,7 @@ import {
 import Reveal from "./Reveal";
 import { Card, SectionHead, pad } from "./ui";
 import { Check, Whatsapp, Chat, Medir, Plan, Entrenar, Ajuste, Arrow } from "./icons";
+import MetodoCarousel from "./MetodoCarousel";
 
 const ICONOS = {
   chat: Chat,
@@ -59,7 +60,13 @@ export function Metodo() {
             </p>
           </Reveal>
 
-          <div className="relative mt-10">
+          {/* Mobile: carrusel con avance automático cada 10s. */}
+          <div className="mt-10">
+            <MetodoCarousel pasos={metodo.pasos} />
+          </div>
+
+          {/* Tablet / desktop: grilla con guía, como antes. */}
+          <div className="relative mt-10 hidden sm:block">
             <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5 lg:gap-5">
               {metodo.pasos.map((p, i) => {
                 const Icono = ICONOS[p.icono];

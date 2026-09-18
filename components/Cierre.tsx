@@ -170,8 +170,8 @@ export function Footer() {
 
   return (
     <footer className="rounded-[26px] bg-ink px-6 py-12 text-bone sm:px-10 sm:py-14 lg:rounded-[36px] lg:px-16">
-      <div className="grid gap-10 border-b border-bone/12 pb-10 lg:grid-cols-[1.3fr_1fr_1fr]">
-        <div>
+      <div className="grid justify-items-center gap-10 border-b border-bone/12 pb-10 text-center lg:grid-cols-3">
+        <div className="flex flex-col items-center">
           <div className="flex items-center gap-3">
             <Logo className="h-9 w-9 text-bone" />
             <span className="display text-[15px] leading-none">
@@ -180,14 +180,14 @@ export function Footer() {
               PERALTA
             </span>
           </div>
-          <p className="prose-body mt-5 max-w-[34ch] text-[14px] text-bone/55">
+          <p className="prose-body mx-auto mt-5 max-w-[34ch] text-[14px] text-bone/55">
             {site.rol}. Planes online y presenciales en {site.ciudad}.
           </p>
         </div>
 
-        <nav aria-label="Secciones del sitio">
+        <nav aria-label="Secciones del sitio" className="flex flex-col items-center">
           <p className="text-[14px] font-semibold text-bone">Secciones</p>
-          <ul className="mt-4 flex flex-col gap-2.5">
+          <ul className="mt-4 flex flex-col items-center gap-2.5">
             {nav.map((n) => (
               <li key={n.href}>
                 <a
@@ -201,9 +201,9 @@ export function Footer() {
           </ul>
         </nav>
 
-        <div>
+        <div className="flex flex-col items-center">
           <p className="text-[14px] font-semibold text-bone">Contacto</p>
-          <ul className="mt-4 flex flex-col gap-3">
+          <ul className="mt-4 flex flex-col items-center gap-3">
             <li>
               <a
                 href={cta.consulta}
@@ -239,11 +239,12 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-3 pt-7 text-[13px] text-bone/35 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col items-center gap-3 pt-7 text-center text-[13px] text-bone/35 sm:flex-row sm:justify-center">
         <p>
           © {anio} {site.nombre}
         </p>
-        <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
+        <span className="hidden sm:inline">·</span>
+        <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
           <a href="/privacidad" className="transition-colors duration-200 hover:text-lime">
             Privacidad
           </a>

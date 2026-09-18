@@ -385,6 +385,19 @@ export const sobreMiTexto = [
   "Ese es el lugar desde el que entiendo mi profesión: utilizar el movimiento y el entrenamiento como herramientas de aprendizaje, desarrollo y transformación.",
 ];
 
+/* Frases a destacar dentro de sobreMiTexto (mismo índice, ni una palabra
+   cambiada: son subcadenas literales del párrafo que se pintan más grandes
+   y en rojo para que salten a la vista al leer). */
+export const sobreMiDestacados: string[][] = [
+  ["el movimiento formó parte de mi vida"],
+  ["nuevas formas de disfrutar del movimiento"],
+  ["siempre supe que quería dedicarme a algo que me permitiera acompañar y ayudar a otras personas"],
+  ["ayudar a los demás, la educación como herramienta de transformación y el movimiento"],
+  ["Hoy prefiero hablar de entrenamiento."],
+  ["movernos mejor, afrontar nuevos desafíos y alcanzar nuestros objetivos"],
+  ["utilizar el movimiento y el entrenamiento como herramientas de aprendizaje, desarrollo y transformación"],
+];
+
 /* ---- Testimonios --------------------------------------------------------- */
 
 export const testimoniosSeccion = {
